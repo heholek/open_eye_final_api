@@ -1,4 +1,4 @@
 const picklist_answers = {
-  answer,
-  question_ID
+  answer: { type: DataTypes.STRING },
+  question_ID: { type: DataTypes.NUMBER }
 };

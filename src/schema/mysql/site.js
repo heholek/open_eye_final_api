@@ -1,4 +1,4 @@
 const site = {
-  site_name,
-  is_active
+  site_name: { type: DataTypes.STRING },
+  is_active: { type: DataTypes.ENUM(["0", "1"]) }
 };
