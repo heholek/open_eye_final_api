@@ -13,6 +13,13 @@ const savePatientCategory = (request, response) => {
   response.json({ status: "200", message: "Saved successfully." });
 };
 
+const getPatientCategory = (request, response) => {
+  PatientCategoryMode.getPatientCategory().then(result => {
+    response.json({ status: "200", patient_category_data: result });
+  });
+};
+
 module.exports = {
-  savePatientCategory
+  savePatientCategory,
+  getPatientCategory
 };

@@ -12,6 +12,13 @@ const saveTile = (request, response) => {
   response.json({ status: "200", message: "Saved successfully." });
 };
 
+const getTile = (request, response) => {
+  tileMode.getTile().then(result => {
+    response.json({ status: "200", tile_data: result });
+  });
+};
+
 module.exports = {
-  saveTile
+  saveTile,
+  getTile
 };
