@@ -24,8 +24,13 @@ const saveQuestion = (request, response) => {
   response.json({ status: "200", message: "Saved successfully." });
 };
 
+const getQuestion = (request, response) => {
+  const userInputData = request.body;
+};
+
 module.exports = {
-  saveQuestion
+  saveQuestion,
+  getQuestion
 };
 
 // {
