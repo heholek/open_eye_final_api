@@ -19,14 +19,14 @@ class FormComponent extends Component {
   render() {
     return (
       <div>
-        <InputTag fieldInputType='text' ></InputTag>
-        <InputTag fieldInputType='text' ></InputTag>
-        <InputTag fieldInputType='text' ></InputTag>
-        <InputTag fieldInputType='text' ></InputTag>
-        <InputTag fieldInputType='text' ></InputTag>
-        <InputTag fieldInputType='text' ></InputTag>
-        <InputTag fieldInputType='text' ></InputTag>
-        <InputTag fieldInputType='text' ></InputTag>
+        <InputTag fieldInputType="text"></InputTag>
+        <InputTag fieldInputType="text"></InputTag>
+        <InputTag fieldInputType="text"></InputTag>
+        <InputTag fieldInputType="text"></InputTag>
+        <InputTag fieldInputType="text"></InputTag>
+        <InputTag fieldInputType="text"></InputTag>
+        <InputTag fieldInputType="text"></InputTag>
+        <InputTag fieldInputType="text"></InputTag>
       </div>
     );
   }

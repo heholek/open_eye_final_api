@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import FormComponent from './container/question_form';
+import FormComponent from "./container/question_form";
 
 ReactDOM.render(<FormComponent />, document.getElementById("root"));
 
