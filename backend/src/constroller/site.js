@@ -16,7 +16,15 @@ const getStie = (request, response) => {
   });
 };
 
+const getSiteByID = (request, response) => {
+  const userInputData = request.params.site_id;
+  siteMode.getSiteByID(userInputData).then(result => {
+    response.json({ status: "200", site_data: result });
+  });
+};
+
 module.exports = {
   saveSite,
-  getStie
+  getStie,
+  getSiteByID
 };

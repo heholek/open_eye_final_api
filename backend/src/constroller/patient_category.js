@@ -19,7 +19,15 @@ const getPatientCategory = (request, response) => {
   });
 };
 
+const getPatientCategoryByID = (request, response) => {
+  const userInputData = request.params.patient_category_id;
+  PatientCategoryMode.getPatientCategoryByID(userInputData).then(result => {
+    response.json({ status: "200", patient_category_data: result });
+  });
+};
+
 module.exports = {
   savePatientCategory,
-  getPatientCategory
+  getPatientCategory,
+  getPatientCategoryByID
 };

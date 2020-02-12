@@ -28,9 +28,17 @@ const getQuestion = (request, response) => {
   const userInputData = request.body;
 };
 
+const getQuestionByID = (request, response) => {
+  const userInputData = request.params.question_id;
+  questionModel.getQuestionByID(userInputData).then(result => {
+    response.json({ status: "200", message: "Data Found.", data: result });
+  });
+};
+
 module.exports = {
   saveQuestion,
-  getQuestion
+  getQuestion,
+  getQuestionByID
 };
 
 // {

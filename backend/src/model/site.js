@@ -17,7 +17,16 @@ const getStie = () => {
   });
 };
 
+const getSiteByID = siteID => {
+  return TileMode.findOne({
+    where: {
+      id: siteID
+    }
+  });
+};
+
 module.exports = {
   saveSite,
-  getStie
+  getStie,
+  getSiteByID
 };

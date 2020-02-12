@@ -8,7 +8,7 @@ const formQuestionSchema = new Schema({
   possible_answers: { type: Array },
   default_answer: { type: String },
   supervision_required: { type: Boolean, default: false },
-  tile_id: { type: String, required: true },
+  tile_id: { type: Array, required: true },
   is_active: { type: Boolean, default: true },
   deactivated_datetime: { type: Date },
   replacement_question_ID: { type: Schema.Types.ObjectId },

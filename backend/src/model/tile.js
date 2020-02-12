@@ -21,7 +21,16 @@ const getTile = () => {
   });
 };
 
+const getTileByID = tileID => {
+  return TileMode.findOne({
+    where: {
+      id: tileID
+    }
+  });
+};
+
 module.exports = {
   saveTile,
-  getTile
+  getTile,
+  getTileByID
 };

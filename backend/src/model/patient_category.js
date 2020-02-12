@@ -24,7 +24,16 @@ const getPatientCategory = () => {
   });
 };
 
+const getPatientCategoryByID = patient_category_id => {
+  return PatientCategoryMode.findOne({
+    where: {
+      id: patient_category_id
+    }
+  });
+};
+
 module.exports = {
   savePatientCategory,
-  getPatientCategory
+  getPatientCategory,
+  getPatientCategoryByID
 };

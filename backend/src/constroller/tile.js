@@ -1,4 +1,5 @@
 const tileMode = require("../model/tile");
+const questionModel = require("../model/questions");
 
 const saveTile = (request, response) => {
   const userInputData = request.body;
@@ -18,7 +19,23 @@ const getTile = (request, response) => {
   });
 };
 
+const getQuestionByTileID = (request, response) => {
+  const userInputData = request.params.tile_id;
+  questionModel
+    .getQuestionByTileID(userInputData)
+    .then(result => response.json({ status: "200", tile_data: result }));
+};
+
+const getTileByID = (request, response) => {
+  const userInputData = request.params.tile_id;
+  tileMode
+    .getTileByID(userInputData)
+    .then(result => response.json({ status: "200", tile_data: result }));
+};
+
 module.exports = {
   saveTile,
-  getTile
+  getTile,
+  getTileByID,
+  getQuestionByTileID
 };
