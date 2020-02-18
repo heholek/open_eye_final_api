@@ -21,7 +21,7 @@ const {
 const { saveSite, getStie, getSiteByID } = require("./constroller/site");
 
 routes.post("/question/save", saveQuestion);
-// routes.get("/question/list", getQuestion);
+routes.get("/question/list", getQuestion);
 routes.get("/question/:question_id", getQuestionByID);
 // routes.put("/question/:question_id", updateQuestionByID)
 

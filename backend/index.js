@@ -13,7 +13,6 @@ bodyParser.urlencoded({ extended: false });
 app.use(bodyParser.json());
 
 app.use((Request, Response, next) => {
-  console.log(Request.body);
   Response.header("Access-Control-Allow-Origin", "*");
   Response.header("Access-Control-Allow-Headers", "*");
   next();

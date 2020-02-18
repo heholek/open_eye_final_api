@@ -4,6 +4,7 @@ const sequelize = require("../../config/db").formDB;
 const Schema = {
   input_name: { type: Sequelize.STRING },
   input_type: { type: Sequelize.STRING },
+  options_required: { type: Sequelize.ENUM(["N", "Y"]) },
   is_active: { type: Sequelize.ENUM(["0", "1"]) }
 };
 

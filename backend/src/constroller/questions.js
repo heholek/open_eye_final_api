@@ -4,25 +4,25 @@ const _ = require("lodash");
 
 const saveQuestion = (request, response) => {
   const userInputData = request.body;
-  let saveData = {
-    tile_id: userInputData.tile,
-    question: userInputData.question,
-    answer_type_id: userInputData.answer_type_id,
-    possible_answers: _.valuesIn(userInputData.answer_list),
-    is_active: userInputData.publish,
-    deactivated_datetime: new Date()
-  };
 
-  if (userInputData.age_ristricted) {
-    saveData.age_restricted = _.valuesIn(userInputData.age_range);
+  if (userInputData.is_child_question == true) {
+    createChildQuestionByID(userInputData);
+  } else {
+    createNewQuestion(userInputData);
   }
+};
 
-  if (userInputData.gender_target) {
-    saveData.gender_restricted = _.valuesIn(userInputData.gender_list);
-  }
+const createNewQuestion = userInputData => {
+  questionModel.saveQuestion(userInputData);
+};
 
-  questionModel.saveQuestion(saveData);
-  response.json({ status: "200", message: "Saved successfully." });
+const createChildQuestionByID = userInputData => {
+  const _id = userInputData.parent_question_id;
+  questionModel.getQuestionByID(_id).then(result => {
+    result.child_question.push(userInputData);
+    saveData = { ...result };
+    questionModel.saveQuestion(result);
+  });
 };
 
 const getQuestion = (request, response) => {
