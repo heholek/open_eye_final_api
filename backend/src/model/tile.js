@@ -29,8 +29,17 @@ const getTileByID = tileID => {
   });
 };
 
+const getTileBySiteID = siteID => {
+  return TileMode.findAll({
+    where: {
+      site_id: siteID
+    }
+  });
+};
+
 module.exports = {
   saveTile,
   getTile,
-  getTileByID
+  getTileByID,
+  getTileBySiteID
 };

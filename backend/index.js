@@ -12,6 +12,13 @@ var jsonParser = bodyParser.json();
 bodyParser.urlencoded({ extended: false });
 app.use(bodyParser.json());
 
+app.use((Request, Response, next) => {
+  console.log(Request.body);
+  Response.header("Access-Control-Allow-Origin", "*");
+  Response.header("Access-Control-Allow-Headers", "*");
+  next();
+});
+
 app.use("/api", Routes);
 
 app.get("/", (req, res) => {

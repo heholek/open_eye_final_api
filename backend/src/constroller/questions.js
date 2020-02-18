@@ -1,4 +1,5 @@
 const questionModel = require("../model/questions");
+const formInputModel = require("../model/form_input_type");
 const _ = require("lodash");
 
 const saveQuestion = (request, response) => {
@@ -35,10 +36,17 @@ const getQuestionByID = (request, response) => {
   });
 };
 
+const getQuestionFormInputType = (request, response) => {
+  formInputModel.getQuestionFormInputType().then(result => {
+    response.json({ status: "200", data: result });
+  });
+};
+
 module.exports = {
   saveQuestion,
   getQuestion,
-  getQuestionByID
+  getQuestionByID,
+  getQuestionFormInputType
 };
 
 // {

@@ -23,7 +23,7 @@ const getQuestionByTileID = (request, response) => {
   const userInputData = request.params.tile_id;
   questionModel
     .getQuestionByTileID(userInputData)
-    .then(result => response.json({ status: "200", tile_data: result }));
+    .then(result => response.json({ status: "200", question_data: result }));
 };
 
 const getTileByID = (request, response) => {
@@ -33,9 +33,17 @@ const getTileByID = (request, response) => {
     .then(result => response.json({ status: "200", tile_data: result }));
 };
 
+const getTileBySiteID = (request, response) => {
+  const userInputData = request.params.site_id;
+  tileMode
+    .getTileBySiteID(userInputData)
+    .then(result => response.json({ status: "200", tile_data: result }));
+};
+
 module.exports = {
   saveTile,
   getTile,
   getTileByID,
+  getTileBySiteID,
   getQuestionByTileID
 };
