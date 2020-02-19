@@ -5,10 +5,6 @@ var app = express();
 const Routes = require("./src/routes");
 const mongoose = require("mongoose");
 
-// create application/json parser
-var jsonParser = bodyParser.json();
-
-// create application/x-www-form-urlencoded parser
 bodyParser.urlencoded({ extended: false });
 app.use(bodyParser.json());
 

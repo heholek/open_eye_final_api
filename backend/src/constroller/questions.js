@@ -17,7 +17,7 @@ const createNewQuestion = userInputData => {
 };
 
 const createChildQuestionByID = userInputData => {
-  const _id = userInputData.parent_question_id;
+  const _id = userInputData.parent_question_ID;
   questionModel.getQuestionByID(_id).then(result => {
     result.child_question.push(userInputData);
     saveData = { ...result };
