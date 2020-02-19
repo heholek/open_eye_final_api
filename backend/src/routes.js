@@ -4,6 +4,7 @@ const {
   saveQuestion,
   getQuestion,
   getQuestionByID,
+  getChildQuestionByID,
   getQuestionFormInputType
 } = require("./constroller/questions");
 const {
@@ -22,6 +23,7 @@ const { saveSite, getStie, getSiteByID } = require("./constroller/site");
 
 routes.post("/question/save", saveQuestion);
 routes.get("/question/list", getQuestion);
+routes.get("/question/:question_id/:child_question_id", getChildQuestionByID);
 routes.get("/question/:question_id", getQuestionByID);
 // routes.put("/question/:question_id", updateQuestionByID)
 

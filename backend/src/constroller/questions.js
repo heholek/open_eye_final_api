@@ -10,6 +10,8 @@ const saveQuestion = (request, response) => {
   } else {
     createNewQuestion(userInputData);
   }
+
+  response.json({ status: "200", message: "Saved successfully." });
 };
 
 const createNewQuestion = userInputData => {
@@ -31,9 +33,14 @@ const getQuestion = (request, response) => {
 
 const getQuestionByID = (request, response) => {
   const userInputData = request.params.question_id;
-  questionModel.getQuestionByID(userInputData).then(result => {
+  console.log(userInputData);
+  searchQuestionByID(userInputData).then(result => {
     response.json({ status: "200", message: "Data Found.", data: result });
   });
+};
+
+const searchQuestionByID = questionID => {
+  return questionModel.getQuestionByID(questionID);
 };
 
 const getQuestionFormInputType = (request, response) => {
@@ -42,10 +49,25 @@ const getQuestionFormInputType = (request, response) => {
   });
 };
 
+const getChildQuestionByID = (request, response) => {
+  if (request.params.child_question_id != "") {
+    searchQuestionByID(request.params.question_id).then(result => {
+      let child_question_data =
+        result.child_question[request.params.child_question_id];
+      response.json({
+        status: "200",
+        message: "Data Found.",
+        data: child_question_data
+      });
+    });
+  }
+};
+
 module.exports = {
   saveQuestion,
   getQuestion,
   getQuestionByID,
+  getChildQuestionByID,
   getQuestionFormInputType
 };
 
