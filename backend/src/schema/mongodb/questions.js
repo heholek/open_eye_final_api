@@ -10,6 +10,7 @@ const formQuestionSchema = new Schema({
   supervision_required: { type: Boolean, default: false },
   site_ID: { type: Array, required: true },
   tile_ID: { type: Array, required: true },
+  site_form_id: { type: Number, required: true },
   publish: { type: Boolean, default: false },
   deactivated_datetime: { type: Date },
   replacement_question_ID: { type: Schema.Types.ObjectId },
