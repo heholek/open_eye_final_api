@@ -37,9 +37,18 @@ const getTileBySiteID = siteID => {
   });
 };
 
+const getTileBySiteFormID = siteFormID => {
+  return TileMode.findAll({
+    where: {
+      site_form_id: siteFormID
+    }
+  });
+};
+
 module.exports = {
   saveTile,
   getTile,
   getTileByID,
+  getTileBySiteFormID,
   getTileBySiteID
 };

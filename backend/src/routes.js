@@ -14,7 +14,8 @@ const {
   getTile,
   getQuestionByTileID,
   getTileByID,
-  getTileBySiteID
+  getTileBySiteID,
+  getTileBySiteFormID
 } = require("./constroller/tile");
 
 const {
@@ -25,7 +26,11 @@ const {
 
 const { saveSite, getStie, getSiteByID } = require("./constroller/site");
 
-const { saveSiteForm, getStieForm } = require("./constroller/site_form");
+const {
+  saveSiteForm,
+  getStieForm,
+  getSiteFormBySiteID
+} = require("./constroller/site_form");
 
 const {
   saveSiteStaffRoles,
@@ -50,8 +55,11 @@ routes.get("/question/:question_id", getQuestionByID);
 routes.post("/tile/save", saveTile);
 routes.get("/tile/list", getTile);
 routes.get("/tile/question/:tile_id", getQuestionByTileID);
-routes.get("/tile/:tile_id", getTileByID);
+
 routes.get("/tile/stie/:site_id", getTileBySiteID);
+routes.get("/tile/form/:site_form_id", getTileBySiteFormID);
+routes.get("/tile/:tile_id", getTileByID);
+
 // routes.put("/tile/:tile_id", updateTileByID);
 
 routes.post("/site/save", saveSite);
@@ -61,14 +69,15 @@ routes.get("/site/:site_id", getSiteByID);
 
 routes.post("/site/form/save", saveSiteForm);
 routes.get("/site/form/list", getStieForm);
+routes.get("/site/form/:site_id", getSiteFormBySiteID);
 
 routes.post("/site/users/save", saveSiteUsers);
 routes.get("/site/users/list", getStieUsers);
 routes.get("/site/users/:site_user_id", getSiteUsersByID);
 
-routes.post("/site/users/save", saveSiteUsers);
-routes.get("/site/users/list", getStieUsers);
-routes.get("/site/users/:site_user_id", getSiteUsersByID);
+// routes.post("/site/users/save", saveSiteUsers);
+// routes.get("/site/users/list", getStieUsers);
+// routes.get("/site/users/:site_user_id", getSiteUsersByID);
 
 routes.post("/site/role/save", saveSiteStaffRoles);
 routes.get("/site/role/list", getSiteStaffRoles);

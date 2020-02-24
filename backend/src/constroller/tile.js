@@ -7,6 +7,7 @@ const saveTile = (request, response) => {
     tile_name: userInputData.title_name,
     current_form_version_id: userInputData.current_form_version_id,
     site_id: userInputData.site_id,
+    site_form_id: userInputData.site_form,
     is_active: userInputData.publish
   };
   tileMode.saveTile(saveData);
@@ -33,6 +34,13 @@ const getTileByID = (request, response) => {
     .then(result => response.json({ status: "200", tile_data: result }));
 };
 
+const getTileBySiteFormID = (request, response) => {
+  const userInputData = request.params.site_form_id;
+  tileMode
+    .getTileBySiteFormID(userInputData)
+    .then(result => response.json({ status: "200", tile_data: result }));
+};
+
 const getTileBySiteID = (request, response) => {
   const userInputData = request.params.site_id;
   tileMode
@@ -45,5 +53,6 @@ module.exports = {
   getTile,
   getTileByID,
   getTileBySiteID,
+  getTileBySiteFormID,
   getQuestionByTileID
 };

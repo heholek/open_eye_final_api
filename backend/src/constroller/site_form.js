@@ -11,7 +11,6 @@ const saveSiteForm = (request, response) => {
     site_id: userInputData.site_id,
     is_active: userInputData.publish
   };
-  console.log(saveData);
   SiteFormModel.saveSiteForm(saveData);
   response.json({ status: "200", message: "Saved successfully." });
 };
@@ -22,28 +21,15 @@ const getStieForm = (request, response) => {
   });
 };
 
-const getQuestionByTileID = (request, response) => {
-  const userInputData = request.params.tile_id;
-  questionModel
-    .getQuestionByTileID(userInputData)
-    .then(result => response.json({ status: "200", question_data: result }));
-};
-
-const getTileByID = (request, response) => {
-  const userInputData = request.params.tile_id;
-  SiteFormModel.getTileByID(userInputData).then(result =>
-    response.json({ status: "200", tile_data: result })
-  );
-};
-
-const getTileBySiteID = (request, response) => {
+const getSiteFormBySiteID = (request, response) => {
   const userInputData = request.params.site_id;
-  SiteFormModel.getTileBySiteID(userInputData).then(result =>
-    response.json({ status: "200", tile_data: result })
+  SiteFormModel.getSiteFormBySiteID(userInputData).then(result =>
+    response.json({ status: "200", site_form_list: result })
   );
 };
 
 module.exports = {
   saveSiteForm,
-  getStieForm
+  getStieForm,
+  getSiteFormBySiteID
 };

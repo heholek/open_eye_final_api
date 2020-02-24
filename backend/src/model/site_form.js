@@ -17,10 +17,10 @@ const getStieForm = () => {
   });
 };
 
-const getSiteByID = siteID => {
-  return SiteFormModel.findOne({
+const getSiteFormBySiteID = siteID => {
+  return SiteFormModel.findAll({
     where: {
-      id: siteID
+      site_id: siteID
     }
   });
 };
@@ -28,5 +28,5 @@ const getSiteByID = siteID => {
 module.exports = {
   saveSiteForm,
   getStieForm,
-  getSiteByID
+  getSiteFormBySiteID
 };

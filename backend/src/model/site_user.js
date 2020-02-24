@@ -8,7 +8,6 @@ const saveSiteUsers = questionData => {
 const getStieUsers = () => {
   return new Promise((resolve, reject) => {
     SiteUserSchema.findAll().then(result => {
-      console.log(result);
       let responseData = {};
       for (let singleData of result) {
         Object.assign(responseData, {

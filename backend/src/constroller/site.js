@@ -1,7 +1,6 @@
 const siteMode = require("../model/site");
 
 const saveSite = (request, response) => {
-  console.log(request);
   const userInputData = request.body;
   const saveData = {
     site_name: userInputData.site_name,

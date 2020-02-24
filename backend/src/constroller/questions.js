@@ -33,7 +33,6 @@ const getQuestion = (request, response) => {
 
 const getQuestionByID = (request, response) => {
   const userInputData = request.params.question_id;
-  console.log(userInputData);
   searchQuestionByID(userInputData).then(result => {
     response.json({ status: "200", message: "Data Found.", data: result });
   });
