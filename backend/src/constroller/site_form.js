@@ -17,7 +17,7 @@ const saveSiteForm = (request, response) => {
 
 const getStieForm = (request, response) => {
   SiteFormModel.getStieForm().then(result => {
-    response.json({ status: "200", tile_data: result });
+    response.json({ status: "200", site_form_list: result });
   });
 };
 

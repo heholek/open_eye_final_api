@@ -21,7 +21,8 @@ const {
 const {
   savePatientCategory,
   getPatientCategory,
-  getPatientCategoryByID
+  getPatientCategoryByID,
+  putPatientCategoryBySiteID
 } = require("./constroller/patient_category");
 
 const { saveSite, getStie, getSiteByID } = require("./constroller/site");
@@ -86,6 +87,6 @@ routes.get("/site/role/:siteID", getSiteStaffRolesByID);
 routes.post("/patient_category/save", savePatientCategory);
 routes.get("/patient_category/list", getPatientCategory);
 routes.get("/patient_category/:patient_category_id", getPatientCategoryByID);
-// routes.put("/patient_category/:patient_category_id", putPatientCategoryByID);
+routes.get("/patient_category/site/:siteID", putPatientCategoryBySiteID);
 
 module.exports = routes;

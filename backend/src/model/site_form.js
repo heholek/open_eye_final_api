@@ -8,9 +8,15 @@ const saveSiteForm = questionData => {
 const getStieForm = () => {
   return new Promise((resolve, reject) => {
     SiteFormModel.findAll().then(result => {
-      let responseData = {};
+      let responseData = [];
       for (let singleData of result) {
-        Object.assign(responseData, { [singleData.id]: singleData.site_name });
+        responseData.push({
+          name: singleData.form_name,
+          key: singleData.id,
+          edit_by: singleData.edit_staff_id,
+          view_by: singleData.view_staff_id,
+          site_id: singleData.site_id
+        });
       }
       resolve(responseData);
     });

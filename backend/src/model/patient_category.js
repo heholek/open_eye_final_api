@@ -32,8 +32,17 @@ const getPatientCategoryByID = patient_category_id => {
   });
 };
 
+const putPatientCategoryBySiteID = patient_category_id => {
+  return PatientCategoryMode.findAll({
+    where: {
+      site_id: patient_category_id
+    }
+  });
+};
+
 module.exports = {
   savePatientCategory,
   getPatientCategory,
-  getPatientCategoryByID
+  getPatientCategoryByID,
+  putPatientCategoryBySiteID
 };

@@ -11,7 +11,7 @@ const getSiteStaffRoles = () => {
       let responseData = [];
       for (let singleData of result) {
         responseData.push({
-          name: singleData.tile_name,
+          name: singleData.role_name,
           key: singleData.id,
           site_id: singleData.site_id
         });
