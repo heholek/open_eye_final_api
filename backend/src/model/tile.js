@@ -1,13 +1,13 @@
-const TileMode = require("../schema/mysql/tile");
+const TileSchema = require("../schema/mysql/tile");
 
 const saveTile = questionData => {
-  const tile = new TileMode(questionData);
+  const tile = new TileSchema(questionData);
   tile.save();
 };
 
 const getTile = () => {
   return new Promise((resolve, reject) => {
-    TileMode.findAll().then(result => {
+    TileSchema.findAll().then(result => {
       let responseData = [];
       for (let singleData of result) {
         responseData.push({
@@ -22,7 +22,7 @@ const getTile = () => {
 };
 
 const getTileByID = tileID => {
-  return TileMode.findOne({
+  return TileSchema.findOne({
     where: {
       id: tileID
     }
@@ -30,7 +30,7 @@ const getTileByID = tileID => {
 };
 
 const getTileBySiteID = siteID => {
-  return TileMode.findAll({
+  return TileSchema.findAll({
     where: {
       site_id: siteID
     }
@@ -38,9 +38,17 @@ const getTileBySiteID = siteID => {
 };
 
 const getTileBySiteFormID = siteFormID => {
-  return TileMode.findAll({
+  return TileSchema.findAll({
     where: {
       site_form_id: siteFormID
+    }
+  });
+};
+
+const updateTileByID = updateData => {
+  return TileSchema.update(updateData, {
+    where: {
+      id: updateData.update_id
     }
   });
 };
@@ -50,5 +58,6 @@ module.exports = {
   getTile,
   getTileByID,
   getTileBySiteFormID,
-  getTileBySiteID
+  getTileBySiteID,
+  updateTileByID
 };

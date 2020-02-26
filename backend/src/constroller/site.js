@@ -11,6 +11,19 @@ const updateSiteByID = (request, response) => {
   response.json({ status: "200", message: "Saved successfully." });
 };
 
+const visibiltySiteByID = (request, response) => {
+  const id = request.params.site_id;
+  SiteModel.getSiteByID(id).then(result => {
+    console.log(!result.is_active);
+    const saveData = {
+      update_id: id,
+      is_active: result.is_active == "1" ? "0" : "1"
+    };
+    SiteModel.updateSiteByID(saveData);
+  });
+  response.json({ status: "200", message: "Saved successfully." });
+};
+
 const saveSite = (request, response) => {
   console.log("save");
 
@@ -40,5 +53,6 @@ module.exports = {
   saveSite,
   getStie,
   getSiteByID,
-  updateSiteByID
+  updateSiteByID,
+  visibiltySiteByID
 };

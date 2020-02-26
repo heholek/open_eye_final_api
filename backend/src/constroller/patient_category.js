@@ -52,10 +52,24 @@ const updatePatientCategory = (request, response) => {
   response.json({ status: "200", message: "Saved successfully." });
 };
 
+const visibiltyPatientCategory = (request, response) => {
+  const id = request.params.patient_category_id;
+  PatientCategoryMode.getPatientCategoryByPatientCategoryID(id).then(result => {
+    console.log(!result.is_active);
+    const saveData = {
+      update_id: id,
+      is_active: result.is_active == "1" ? "0" : "1"
+    };
+    PatientCategoryMode.updatePatientCategory(saveData);
+  });
+  response.json({ status: "200", message: "Saved successfully." });
+};
+
 module.exports = {
   savePatientCategory,
   getPatientCategory,
   getPatientCategoryByID,
   getPatientCategoryByPatientCategoryID,
-  updatePatientCategory
+  updatePatientCategory,
+  visibiltyPatientCategory
 };

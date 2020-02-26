@@ -15,6 +15,19 @@ const saveSiteForm = (request, response) => {
   response.json({ status: "200", message: "Saved successfully." });
 };
 
+const visibiltySiteFormBySiteID = (request, response) => {
+  const id = request.params.siteFormID;
+  SiteFormModel.getSiteFormBySiteFormID(id).then(result => {
+    console.log(!result.is_active);
+    const saveData = {
+      update_id: id,
+      is_active: result.is_active == "1" ? "0" : "1"
+    };
+    SiteFormModel.updateSiteForm(saveData);
+  });
+  response.json({ status: "200", message: "Saved successfully." });
+};
+
 const updateSiteForm = (request, response) => {
   const userInputData = request.body;
   let saveData = {
@@ -55,5 +68,6 @@ module.exports = {
   getStieForm,
   getSiteFormBySiteID,
   getSiteFormBySiteFormID,
-  updateSiteForm
+  updateSiteForm,
+  visibiltySiteFormBySiteID
 };

@@ -15,7 +15,9 @@ const {
   getQuestionByTileID,
   getTileByID,
   getTileBySiteID,
-  getTileBySiteFormID
+  getTileBySiteFormID,
+  updateTileByID,
+  visibiltyTileByID
 } = require("./constroller/tile");
 
 const {
@@ -23,13 +25,15 @@ const {
   getPatientCategory,
   getPatientCategoryByID,
   getPatientCategoryByPatientCategoryID,
-  updatePatientCategory
+  updatePatientCategory,
+  visibiltyPatientCategory
 } = require("./constroller/patient_category");
 
 const {
   saveSite,
   getStie,
   getSiteByID,
+  visibiltySiteByID,
   updateSiteByID
 } = require("./constroller/site");
 
@@ -38,7 +42,8 @@ const {
   updateSiteForm,
   getSiteFormBySiteFormID,
   getStieForm,
-  getSiteFormBySiteID
+  getSiteFormBySiteID,
+  visibiltySiteFormBySiteID
 } = require("./constroller/site_form");
 
 const {
@@ -46,14 +51,15 @@ const {
   updateSiteStaffRoles,
   getSiteStaffRoles,
   getSiteStaffRolesByID,
-  getSiteStaffRolesByStaffID
+  getSiteStaffRolesByStaffID,
+  visibiltySiteStaffRolesByStaffID
 } = require("./constroller/site_staf_role");
 
-const {
-  saveSiteUsers,
-  getStieUsers,
-  getSiteUsersByID
-} = require("./constroller/site_user");
+// const {
+//   saveSiteUsers,
+//   getStieUsers,
+//   getSiteUsersByID
+// } = require("./constroller/site_user");
 
 routes.get("/question/form/input_types", getQuestionFormInputType);
 
@@ -61,7 +67,6 @@ routes.post("/question/save", saveQuestion);
 routes.get("/question/list", getQuestion);
 routes.get("/question/:question_id/:child_question_id", getChildQuestionByID);
 routes.get("/question/:question_id", getQuestionByID);
-// routes.put("/question/:question_id", updateQuestionByID)
 
 routes.post("/tile/save", saveTile);
 routes.get("/tile/list", getTile);
@@ -71,32 +76,36 @@ routes.get("/tile/stie/:site_id", getTileBySiteID);
 routes.get("/tile/form/:site_form_id", getTileBySiteFormID);
 routes.get("/tile/:tile_id", getTileByID);
 
-// routes.put("/tile/:tile_id", updateTileByID);
+routes.post("/tile/update", updateTileByID);
+routes.get("/tile/visibilty/:tile_id", visibiltyTileByID);
 
 routes.post("/site/save", saveSite);
 routes.post("/site/update", updateSiteByID);
 routes.get("/site/list", getStie);
 routes.get("/site/:site_id", getSiteByID);
+routes.get("/site/visibilty/:site_id", visibiltySiteByID);
 
 routes.post("/site/form/save", saveSiteForm);
 routes.post("/site/form/update", updateSiteForm);
 routes.get("/site/form/get/:siteFormID", getSiteFormBySiteFormID);
 routes.get("/site/form/list", getStieForm);
 routes.get("/site/form/:site_id", getSiteFormBySiteID);
-
-routes.post("/site/users/save", saveSiteUsers);
-routes.get("/site/users/list", getStieUsers);
-routes.get("/site/users/:site_user_id", getSiteUsersByID);
+routes.get("/site/form/visibilty/:siteFormID", visibiltySiteFormBySiteID);
 
 // routes.post("/site/users/save", saveSiteUsers);
 // routes.get("/site/users/list", getStieUsers);
 // routes.get("/site/users/:site_user_id", getSiteUsersByID);
+// routes.get("/site/users/visibilty/:site_id", visibiltySiteUsersByID);
 
 routes.post("/site/role/save", saveSiteStaffRoles);
 routes.post("/site/role/update", updateSiteStaffRoles);
 routes.get("/site/role/list", getSiteStaffRoles);
-routes.get("/site/role/:siteID", getSiteStaffRolesByID);
 routes.get("/site/role/get/:siteStaffID", getSiteStaffRolesByStaffID);
+routes.get(
+  "/site/role/visibilty/:siteStaffID",
+  visibiltySiteStaffRolesByStaffID
+);
+routes.get("/site/role/:siteID", getSiteStaffRolesByID);
 
 routes.post("/patient_category/save", savePatientCategory);
 routes.post("/patient_category/update", updatePatientCategory);
@@ -108,6 +117,10 @@ routes.get(
 routes.get(
   "/patient_category/:patient_category_id",
   getPatientCategoryByPatientCategoryID
+);
+routes.get(
+  "/patient_category/visibilty/:patient_category_id",
+  visibiltyPatientCategory
 );
 
 module.exports = routes;
