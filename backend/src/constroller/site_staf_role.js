@@ -11,6 +11,18 @@ const saveSiteStaffRoles = (request, response) => {
   response.json({ status: "200", message: "Saved successfully." });
 };
 
+const updateSiteStaffRoles = (request, response) => {
+  const userInputData = request.body;
+  let saveData = {
+    update_id: userInputData.id,
+    site_id: userInputData.site_id,
+    role_name: userInputData.staff_role_name,
+    is_active: userInputData.publish
+  };
+  SiteStaffRoleModel.updateSiteStaffRoles(saveData);
+  response.json({ status: "200", message: "Saved successfully." });
+};
+
 const getSiteStaffRoles = (request, response) => {
   SiteStaffRoleModel.getSiteStaffRoles().then(result => {
     response.json({ status: "200", staff_data: result });
@@ -24,8 +36,17 @@ const getSiteStaffRolesByID = (request, response) => {
   );
 };
 
+const getSiteStaffRolesByStaffID = (request, response) => {
+  const userInputData = request.params.siteStaffID;
+  SiteStaffRoleModel.getSiteStaffRolesByStaffID(userInputData).then(result =>
+    response.json({ status: "200", staff_data: result })
+  );
+};
+
 module.exports = {
   saveSiteStaffRoles,
   getSiteStaffRoles,
-  getSiteStaffRolesByID
+  getSiteStaffRolesByID,
+  getSiteStaffRolesByStaffID,
+  updateSiteStaffRoles
 };

@@ -31,8 +31,26 @@ const getSiteFormBySiteID = siteID => {
   });
 };
 
+const getSiteFormBySiteFormID = siteFormID => {
+  return SiteFormModel.findOne({
+    where: {
+      id: siteFormID
+    }
+  });
+};
+
+const updateSiteForm = updateData => {
+  return SiteFormModel.update(updateData, {
+    where: {
+      id: updateData.update_id
+    }
+  });
+};
+
 module.exports = {
   saveSiteForm,
   getStieForm,
-  getSiteFormBySiteID
+  getSiteFormBySiteID,
+  getSiteFormBySiteFormID,
+  updateSiteForm
 };

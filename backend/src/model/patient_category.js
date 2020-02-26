@@ -1,8 +1,8 @@
 const PatientCategoryMode = require("../schema/mysql/patient_category");
 const _ = require("lodash");
 
-const savePatientCategory = questionData => {
-  const PatientCategory = new PatientCategoryMode(questionData);
+const savePatientCategory = patientCategoryData => {
+  const PatientCategory = new PatientCategoryMode(patientCategoryData);
   PatientCategory.save();
 };
 
@@ -24,7 +24,7 @@ const getPatientCategory = () => {
   });
 };
 
-const getPatientCategoryByID = patient_category_id => {
+const getPatientCategoryByPatientCategoryID = patient_category_id => {
   return PatientCategoryMode.findOne({
     where: {
       id: patient_category_id
@@ -32,10 +32,18 @@ const getPatientCategoryByID = patient_category_id => {
   });
 };
 
-const putPatientCategoryBySiteID = patient_category_id => {
+const getPatientCategoryByID = siteID => {
   return PatientCategoryMode.findAll({
     where: {
-      site_id: patient_category_id
+      site_id: siteID
+    }
+  });
+};
+
+const updatePatientCategory = patientCategoryData => {
+  return PatientCategoryMode.update(patientCategoryData, {
+    where: {
+      id: patientCategoryData.update_id
     }
   });
 };
@@ -44,5 +52,6 @@ module.exports = {
   savePatientCategory,
   getPatientCategory,
   getPatientCategoryByID,
-  putPatientCategoryBySiteID
+  getPatientCategoryByPatientCategoryID,
+  updatePatientCategory
 };

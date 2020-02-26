@@ -28,9 +28,26 @@ const getSiteStaffRolesByID = siteID => {
     }
   });
 };
+const getSiteStaffRolesByStaffID = siteStaffID => {
+  return SiteStaffRoleSchema.findOne({
+    where: {
+      id: siteStaffID
+    }
+  });
+};
+
+const updateSiteStaffRoles = updateData => {
+  return SiteStaffRoleSchema.update(updateData, {
+    where: {
+      id: updateData.update_id
+    }
+  });
+};
 
 module.exports = {
   saveSiteStaffRoles,
   getSiteStaffRoles,
-  getSiteStaffRolesByID
+  getSiteStaffRolesByID,
+  getSiteStaffRolesByStaffID,
+  updateSiteStaffRoles
 };

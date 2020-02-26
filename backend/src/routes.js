@@ -22,21 +22,31 @@ const {
   savePatientCategory,
   getPatientCategory,
   getPatientCategoryByID,
-  putPatientCategoryBySiteID
+  getPatientCategoryByPatientCategoryID,
+  updatePatientCategory
 } = require("./constroller/patient_category");
 
-const { saveSite, getStie, getSiteByID } = require("./constroller/site");
+const {
+  saveSite,
+  getStie,
+  getSiteByID,
+  updateSiteByID
+} = require("./constroller/site");
 
 const {
   saveSiteForm,
+  updateSiteForm,
+  getSiteFormBySiteFormID,
   getStieForm,
   getSiteFormBySiteID
 } = require("./constroller/site_form");
 
 const {
   saveSiteStaffRoles,
+  updateSiteStaffRoles,
   getSiteStaffRoles,
-  getSiteStaffRolesByID
+  getSiteStaffRolesByID,
+  getSiteStaffRolesByStaffID
 } = require("./constroller/site_staf_role");
 
 const {
@@ -64,11 +74,13 @@ routes.get("/tile/:tile_id", getTileByID);
 // routes.put("/tile/:tile_id", updateTileByID);
 
 routes.post("/site/save", saveSite);
+routes.post("/site/update", updateSiteByID);
 routes.get("/site/list", getStie);
 routes.get("/site/:site_id", getSiteByID);
-// routes.put("/site/:site_id", putSiteByID);
 
 routes.post("/site/form/save", saveSiteForm);
+routes.post("/site/form/update", updateSiteForm);
+routes.get("/site/form/get/:siteFormID", getSiteFormBySiteFormID);
 routes.get("/site/form/list", getStieForm);
 routes.get("/site/form/:site_id", getSiteFormBySiteID);
 
@@ -81,12 +93,21 @@ routes.get("/site/users/:site_user_id", getSiteUsersByID);
 // routes.get("/site/users/:site_user_id", getSiteUsersByID);
 
 routes.post("/site/role/save", saveSiteStaffRoles);
+routes.post("/site/role/update", updateSiteStaffRoles);
 routes.get("/site/role/list", getSiteStaffRoles);
 routes.get("/site/role/:siteID", getSiteStaffRolesByID);
+routes.get("/site/role/get/:siteStaffID", getSiteStaffRolesByStaffID);
 
 routes.post("/patient_category/save", savePatientCategory);
+routes.post("/patient_category/update", updatePatientCategory);
 routes.get("/patient_category/list", getPatientCategory);
-routes.get("/patient_category/:patient_category_id", getPatientCategoryByID);
-routes.get("/patient_category/site/:siteID", putPatientCategoryBySiteID);
+routes.get(
+  "/patient_category/site/:patient_category_id",
+  getPatientCategoryByID
+);
+routes.get(
+  "/patient_category/:patient_category_id",
+  getPatientCategoryByPatientCategoryID
+);
 
 module.exports = routes;
