@@ -14,6 +14,22 @@ const saveQuestion = (request, response) => {
   response.json({ status: "200", message: "Saved successfully." });
 };
 
+const updateQuestion = (request, response) => {
+  const userInputData = request.body;
+  if (userInputData.questionID != null) {
+    if (userInputData.indexID != null) {
+      updateChildQuestionData(userInputData);
+    } else {
+      updateParentQuestion(userInputData);
+    }
+  }
+  response.json({ status: "200", message: "Saved successfully." });
+};
+
+const updateChildQuestionData = questionData => {};
+
+const updateParentQuestion = questionData => {};
+
 const createNewQuestion = userInputData => {
   questionModel.saveQuestion(userInputData);
 };
@@ -64,6 +80,7 @@ const getChildQuestionByID = (request, response) => {
 
 module.exports = {
   saveQuestion,
+  updateQuestion,
   getQuestion,
   getQuestionByID,
   getChildQuestionByID,

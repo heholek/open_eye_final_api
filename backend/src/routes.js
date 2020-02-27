@@ -3,6 +3,7 @@ const routes = express.Router();
 
 const {
   saveQuestion,
+  updateQuestion,
   getQuestion,
   getQuestionByID,
   getChildQuestionByID,
@@ -64,6 +65,7 @@ const {
 routes.get("/question/form/input_types", getQuestionFormInputType);
 
 routes.post("/question/save", saveQuestion);
+routes.post("/question/update", updateQuestion);
 routes.get("/question/list", getQuestion);
 routes.get("/question/:question_id/:child_question_id", getChildQuestionByID);
 routes.get("/question/:question_id", getQuestionByID);
