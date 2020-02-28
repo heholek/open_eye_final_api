@@ -26,9 +26,14 @@ const updateQuestion = (request, response) => {
   response.json({ status: "200", message: "Saved successfully." });
 };
 
-const updateChildQuestionData = questionData => {};
+const updateChildQuestionData = questionData => {
+  console.log(questionData);
+};
 
-const updateParentQuestion = questionData => {};
+const updateParentQuestion = questionData => {
+  questionData.key = questionData.questionID;
+  questionModel.updateParentQuestion(questionData);
+};
 
 const createNewQuestion = userInputData => {
   questionModel.saveQuestion(userInputData);
@@ -44,7 +49,9 @@ const createChildQuestionByID = userInputData => {
 };
 
 const getQuestion = (request, response) => {
-  const userInputData = request.body;
+  questionModel.getQuestion().then(result => {
+    response.json({ status: "200", message: "Data Found.", data: result });
+  });
 };
 
 const getQuestionByID = (request, response) => {
@@ -78,25 +85,54 @@ const getChildQuestionByID = (request, response) => {
   }
 };
 
+const getQuestionBySiteID = (request, response) => {
+  if (request.params.siteID != "") {
+    questionModel.getQuestionBySiteID(request.params.siteID).then(result => {
+      response.json({
+        status: "200",
+        message: "Data Found.",
+        data: result
+      });
+    });
+  }
+};
+
+const getQuestionBySiteFormID = (request, response) => {
+  if (request.params.siteFormID != "") {
+    questionModel
+      .getQuestionBySiteFormID(request.params.siteFormID)
+      .then(result => {
+        response.json({
+          status: "200",
+          message: "Data Found.",
+          data: result
+        });
+      });
+  }
+};
+
+const getQuestionByformTileID = (request, response) => {
+  if (request.params.formTileID != "") {
+    questionModel
+      .getQuestionByTileID(request.params.formTileID)
+      .then(result => {
+        response.json({
+          status: "200",
+          message: "Data Found.",
+          data: result
+        });
+      });
+  }
+};
+
 module.exports = {
   saveQuestion,
   updateQuestion,
   getQuestion,
   getQuestionByID,
+  getQuestionBySiteID,
+  getQuestionBySiteFormID,
+  getQuestionByformTileID,
   getChildQuestionByID,
   getQuestionFormInputType
 };
-
-// {
-// 	"is_child_question":true,
-// 	"parent_id":"10",
-// 	"tile":"2",
-// 	"question":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-// 	"answer_type_id":"1",
-// 	"answer_list":{"0":"yes","1":"no"},
-// "disable_question":false,
-// "age_ristricted":true,
-// "age_range":{"min":"15", "max":"58"},
-// "gender_target":true,
-// "gender_list":{"0":"male","1":"third gender"}
-// }

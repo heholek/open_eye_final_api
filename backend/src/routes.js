@@ -6,6 +6,9 @@ const {
   updateQuestion,
   getQuestion,
   getQuestionByID,
+  getQuestionBySiteID,
+  getQuestionBySiteFormID,
+  getQuestionByformTileID,
   getChildQuestionByID,
   getQuestionFormInputType
 } = require("./constroller/questions");
@@ -67,8 +70,11 @@ routes.get("/question/form/input_types", getQuestionFormInputType);
 routes.post("/question/save", saveQuestion);
 routes.post("/question/update", updateQuestion);
 routes.get("/question/list", getQuestion);
-routes.get("/question/:question_id/:child_question_id", getChildQuestionByID);
+routes.get("/question/site/:siteID", getQuestionBySiteID);
+routes.get("/question/form/:siteFormID", getQuestionBySiteFormID);
+routes.get("/question/tile/:formTileID", getQuestionByformTileID);
 routes.get("/question/:question_id", getQuestionByID);
+routes.get("/question/:question_id/:child_question_id", getChildQuestionByID);
 
 routes.post("/tile/save", saveTile);
 routes.get("/tile/list", getTile);
