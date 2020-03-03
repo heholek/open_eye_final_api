@@ -20,6 +20,8 @@ app.get("/", (req, res) => {
   res.json({ status: "200" });
 });
 
+// app.listen(3001);
+
 mongoose.connect("mongodb://localhost:27017/open_eye").then(result => {
   app.listen(3001);
 });

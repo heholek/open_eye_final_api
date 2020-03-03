@@ -36,6 +36,13 @@ const updateParentQuestion = questionData => {
 };
 
 const createNewQuestion = userInputData => {
+  userInputData.possible_answers_list = _.remove(
+    userInputData.possible_answers_list,
+    n => n != ""
+  );
+  if (userInputData.possible_answers_list.length > 0) {
+    userInputData.possible_answers = userInputData.possible_answers_list;
+  }
   questionModel.saveQuestion(userInputData);
 };
 

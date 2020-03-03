@@ -59,11 +59,15 @@ const {
   visibiltySiteStaffRolesByStaffID
 } = require("./constroller/site_staf_role");
 
+const ReceivedPatientData = require("./routes/patient_data");
+
 // const {
 //   saveSiteUsers,
 //   getStieUsers,
 //   getSiteUsersByID
 // } = require("./constroller/site_user");
+
+// routes.use("/open_eye", ReceivedPatientData);
 
 routes.get("/question/form/input_types", getQuestionFormInputType);
 
