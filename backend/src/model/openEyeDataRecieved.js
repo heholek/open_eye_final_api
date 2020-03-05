@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const getOpenEyeDataSchema = require("../../schema/mongodb/recieved_openeye_patient_data");
+const getOpenEyeDataSchema = require("../schema/mongodb/recieved_openeye_patient_data");
 const _ = require("lodash");
 
 mongoose.set("useUnifiedTopology", true);
@@ -20,12 +20,18 @@ const getDataFromDB = nhs_num => {
 
 const getAllDataFromDB = () => {
   return new Promise((resolve, reject) => {
-    console.log("in");
     resolve(getOpenEyeDataSchema.find({}));
   });
 };
 
+const saveJson = openEyeRecievedData => {
+  let saveData = new getOpenEyeDataSchema();
+  saveData.received = openEyeRecievedData;
+  saveData.save();
+};
+
 module.exports = {
   getDataFromDB,
-  getAllDataFromDB
+  getAllDataFromDB,
+  saveJson
 };

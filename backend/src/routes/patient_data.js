@@ -2,12 +2,12 @@ const express = require("express");
 const routes = express.Router();
 
 const {
-  //   SaveJson,
+  saveJson,
   getAllDataFromDB,
   getDataFromDB
-} = require("../constroller/openeye_patient_data/getOpenEyeData");
+} = require("../constroller/openEyeDataRecieved");
 
-// routes.post("/openeyedata", SaveJson);
+routes.post("/openeyedata", saveJson);
 routes.get("/getdata", getAllDataFromDB);
 routes.get("/getdata/:nhs_num", getDataFromDB);
 

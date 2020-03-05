@@ -7,12 +7,6 @@ const TileRoute = require("./routes/tile");
 const PatientDataRoute = require("./routes/patient_data");
 const PatientCategoryRoute = require("./routes/patient_category");
 
-// const {
-//   saveSiteUsers,
-//   getStieUsers,
-//   getSiteUsersByID
-// } = require("./constroller/site_user");
-
 routes.use("/question", QuestionsRoute);
 routes.use("/site", SitesRoute);
 routes.use("/tile", TileRoute);

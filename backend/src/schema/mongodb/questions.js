@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const { formQuestionsData_db } = require("../../config/mongodb");
 
 const formQuestionSchema = new Schema({
   question: { type: String, required: true },
@@ -19,4 +20,4 @@ const formQuestionSchema = new Schema({
   child_question: { type: Array }
 });
 
-module.exports = mongoose.model("question", formQuestionSchema);
+module.exports = formQuestionsData_db.model("question", formQuestionSchema);

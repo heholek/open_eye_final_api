@@ -1,8 +1,7 @@
-const formQuestionsDataDB = require("../../config/mongodb")
-  .formQuestionsData_db;
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
+const { patientRecievedData_db } = require("../../config/mongodb");
 
 const responseSchema = new Schema({
   received: {
@@ -15,4 +14,7 @@ const responseSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model("openeye_response_received", responseSchema);
+module.exports = patientRecievedData_db.model(
+  "openeye_response_received",
+  responseSchema
+);
