@@ -7,10 +7,19 @@ const TileRoute = require("./routes/tile");
 const PatientDataRoute = require("./routes/patient_data");
 const PatientCategoryRoute = require("./routes/patient_category");
 
+const ValidateToken = require("./constroller/api_token_validation");
+const Encryption = require("./constroller/encryption");
+
 routes.use("/question", QuestionsRoute);
 routes.use("/site", SitesRoute);
 routes.use("/tile", TileRoute);
 routes.use("/patient_data", PatientDataRoute);
 routes.use("/patient_category", PatientCategoryRoute);
+
+// routes.use("/validate/token", ValidateToken.generateToken);
+// routes.use("/validate/test", ValidateToken.getDataFromToken);
+
+// routes.use("/cipher/generate", Encryption.generateCipher);
+// routes.use("/cipher/degenerate", Encryption.deCipher);
 
 module.exports = routes;
