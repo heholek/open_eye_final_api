@@ -10,6 +10,7 @@ const userResponse = new Sequelize("open_eye_answers_db", "openeye2", "Openeye2@
   host: "localhost",
   dialect: "mysql"
   // timezone: "Asia/Kolkata"
+  
 });
 
 module.exports = {
