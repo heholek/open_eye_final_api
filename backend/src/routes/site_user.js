@@ -1,4 +1,8 @@
-const { saveSiteUsers, getStieUsersByToken, viewTestData } = require("../constroller/site_user");
+const {
+  saveSiteUsers,
+  getStieUsersByToken,
+  viewTestData
+} = require("../constroller/site_user");
 
 const express = require("express");
 const routes = express.Router();
