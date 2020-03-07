@@ -45,8 +45,8 @@ const getAllDataFromDB = (request, response) => {
 
 const saveJson = (request, response) => {
   const receivedData = request.body.data;
-  const patientData = generatePatientDataFromCypher(receivedData)
-  if(patientData) {
+  const patientData = generatePatientDataFromCypher(receivedData);
+  if (patientData) {
     console.log(patientData);
     getOpenEyeDataModle.saveJson(patientData);
     response.json({ statu: "200", message: "successfully saved" });
