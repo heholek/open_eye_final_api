@@ -27,8 +27,17 @@ const getSiteUsersByID = siteUserID => {
   });
 };
 
+const getStieUsersByToken = userToken => {
+  return SiteUserSchema.findOne({
+    where: {
+      user_validation_token: userToken
+    }
+  });
+};
+
 module.exports = {
   saveSiteUsers,
   getStieUsers,
+  getStieUsersByToken,
   getSiteUsersByID
 };

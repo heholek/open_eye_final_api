@@ -2,9 +2,11 @@ const Sequelize = require("sequelize");
 const sequelize = require("../../config/db").formDB;
 
 const Schema = {
-  user_id: { type: Sequelize.NUMBER },
+  user_name: { type: Sequelize.STRING },
+  password: { type: Sequelize.STRING },
   site_id: { type: Sequelize.NUMBER },
-  user_role_name: { type: Sequelize.STRING },
+  staff_role: { type: Sequelize.STRING },
+  user_validation_token: { type: Sequelize.STRING },
   is_active: { type: Sequelize.ENUM(["0", "1"]) }
 };
 
