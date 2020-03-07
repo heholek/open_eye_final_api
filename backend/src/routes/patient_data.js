@@ -4,7 +4,8 @@ const routes = express.Router();
 const {
   saveJson,
   getAllDataFromDB,
-  getDataFromDB
+  getDataFromDB,
+  getTestDataFromDB
 } = require("../constroller/openEyeDataRecieved");
 
 routes.post("/openeyedata", saveJson);
