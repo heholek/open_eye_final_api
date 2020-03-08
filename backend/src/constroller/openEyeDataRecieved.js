@@ -58,6 +58,7 @@ const saveJson = (request, response) => {
 
 const generatePatientDataFromCypher = data => {
   const decipherData = encryption.decipherThisString(data);
+  console.log(decipherData)
   try {
     tokenValidation.verifyToke(decipherData);
     const payLoadData = decipherData.split(".")[1];
