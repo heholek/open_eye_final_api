@@ -3,17 +3,25 @@ mongoose.set("useUnifiedTopology", true);
 
 const patientRecievedData_db = mongoose.createConnection(
   // "mongodb://localhost:27017/openeyes?authSource=admin",
-  "mongodb://root:Openeye@132#$@localhost:27017/openeyes?authSource=admin",
+  "mongodb://localhost:27017/openeyes",
   {
-    useNewUrlParser: true
+    "auth": {
+      "authSource": "admin"
+    },
+    "user": "root",
+    "pass": "Openeye@132#$"
   }
 );
 
 const formQuestionsData_db = mongoose.createConnection(
   // "mongodb://localhost:27017/open_eye?authSource=admin",
-  "mongodb://root:Openeye@132#$@localhost:27017/open_eye?authSource=admin",
+  "mongodb://localhost:27017/open_eye",
   {
-    useNewUrlParser: true
+    "auth": {
+      "authSource": "admin"
+    },
+    "user": "root",
+    "pass": "Openeye@132#$"
   }
 );
 
