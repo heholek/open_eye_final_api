@@ -8,9 +8,11 @@ var Base64 = require("js-base64").Base64;
 mongoose.set("useUnifiedTopology", true);
 
 const getTestDataFromDB = (request, response) => {
+  console.log("in")
   getOpenEyeDataModle
     .getDataFromDB(request.params.nhs_num)
     .then(userData => {
+      console.log(userData);
       response.json({ data: userData.received, status: "200" });
     })
     .catch(errorMessage => {
