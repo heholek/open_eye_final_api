@@ -8,7 +8,6 @@ var Base64 = require("js-base64").Base64;
 mongoose.set("useUnifiedTopology", true);
 
 const getTestDataFromDB = (request, response) => {
-  console.log("in")
   getOpenEyeDataModle
     .getDataFromDB(request.params.nhs_num)
     .then(userData => {
@@ -58,10 +57,10 @@ const saveJson = (request, response) => {
 };
 
 const generatePatientDataFromCypher = data => {
-  // const decipherData = encryption.decipherThisString(data);
+  const decipherData = encryption.decipherThisString(data);
   try {
-    tokenValidation.verifyToke(data);
-    const payLoadData = data.split(".")[1];
+    tokenValidation.verifyToke(decipherData);
+    const payLoadData = decipherData.split(".")[1];
     return JSON.parse(Base64.decode(payLoadData));
   } catch {
     return false;
