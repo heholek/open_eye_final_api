@@ -12,7 +12,14 @@ const getTestDataFromDB = (request, response) => {
     .getDataFromDB(request.params.nhs_num)
     .then(userData => {
       console.log(userData);
-      response.json({ data: userData.received, status: "200" });
+      response.json({
+        data: {
+          token: tokenValidation.generateToke(userData.received),
+          userData: userData.received,
+          test_ciphercode: encryption.cipherThisString(tokenValidation.generateToke(userData.received))
+        },
+        status: "200"
+      });
     })
     .catch(errorMessage => {
       response.json({ message: "No NHS Number Found.", status: "404" });
@@ -56,6 +63,18 @@ const saveJson = (request, response) => {
   }
 };
 
+const saveTestJson = (request, response) => {
+  const patientData = request.body.data;
+  // const patientData = generatePatientDataFromCypher(receivedData);
+  if (patientData) {
+    console.log(patientData);
+    getOpenEyeDataModle.saveJson(patientData);
+    response.json({ statu: "200", message: "successfully saved" });
+  } else {
+    response.json({ statu: "404", message: "Data recieved is invalid." });
+  }
+};
+
 const generatePatientDataFromCypher = data => {
   const decipherData = encryption.decipherThisString(data);
   try {
@@ -84,5 +103,6 @@ module.exports = {
   getDataFromDB,
   getAllDataFromDB,
   getTestDataFromDB,
-  saveJson
+  saveJson,
+  saveTestJson
 };
